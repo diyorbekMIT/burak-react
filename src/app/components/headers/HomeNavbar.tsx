@@ -2,30 +2,24 @@ import { Box, Button, Container, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 export function HomeNavbar() {
-    const authMember = false;
+    const authMember = null;
     return (
         <div className="home-navbar">
-            <Container sx={{ mt: "55px", height: "642px" }}>
+            <Container className="navbar-container">
                 <Stack 
-                    sx={{ height: "50px" }} 
-                    flexDirection="row" 
-                    justifyContent="space-between"
-                    alignItems="center"
+                    className="menu"
                 >
                     <Box>
                         <NavLink to="/">
                             <img  
-                                style={{ width: "125px", height: "30px" }}
+                                className="brand-logo"
                                 src="/icons/burak.svg"
-                                alt="Logo"
+                               
                             />
                         </NavLink>
                     </Box>
                     <Stack 
-                        flexDirection="row"
-                        justifyContent="space-between"
-                        minWidth="700px"
-                        alignItems="center"
+                        className="links"
                     >
                          <Box className="hover-line">
                             <NavLink to="/home" className="product-link underline">Home</NavLink>
@@ -48,14 +42,31 @@ export function HomeNavbar() {
                         </Box>
                         <Box>
                             {!authMember ? (
-                                <Button variant="contained" style={{ background: "#3776CC", color: "#f8f8ff" }}>Login</Button>
+                                <Button variant="contained" className="login-button">Login</Button>
                             ) : (
-                                <img alt="User" />
+                                <img 
+                                className="user-avatar"
+                                src="/icons/default-user.svg" 
+                                alt="User" />
                             )}
                         </Box>
                     </Stack>
                 </Stack>
-                <Stack>Detail</Stack>
+                <Stack className={"header-frame"}>
+                    <Stack className={"detail"}>
+                        <Box className={"head-main-txt"}>World's Most Delicious Cousine</Box>
+                        <Box className={"wel-txt"}>The Choice, not just a choice</Box>
+                        <Box className={"service-txt"}>24 hours service</Box>
+                        <Box className={"sign-up"}>
+                            {!authMember ? (
+                                <Button variant="contained" className="signup-button">Sign Up</Button>
+                            ) : null}
+                        </Box>
+                    </Stack>
+                    <Box className={"logo-frame"}>
+                        <div className={"logo-img"}></div>
+                    </Box>
+                </Stack>
             </Container>
         </div>
     );
