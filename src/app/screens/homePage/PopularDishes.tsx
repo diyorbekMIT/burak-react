@@ -1,8 +1,8 @@
 import React from "react";
 import { Container } from "@mui/material";
 
-export default function Statistics() {
+export default function PopularDishes() {
     return <div>
-        <Container>Statistics</Container>
+        <Container>Popular Dishes</Container>
     </div>
 }
