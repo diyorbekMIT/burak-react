@@ -1,14 +1,17 @@
-import React, { useState } from "react";
-import { Box, Button, Stack, IconButton, Badge, Menu } from "@mui/material";
+import React from "react";
+import { Box, Button, Stack } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import Badge from "@mui/material/Badge";
+import Menu from "@mui/material/Menu";
 import CancelIcon from "@mui/icons-material/Cancel";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function Basket() {
   const authMember = null;
-  const navigate = useNavigate();
+  const history = useHistory();
 
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
   /** HANDLERS **/
@@ -17,15 +20,6 @@ export default function Basket() {
   };
   const handleClose = () => {
     setAnchorEl(null);
-  };
-
-  const handleCheckout = () => {
-    if (authMember) {
-      navigate("/checkout");
-    } else {
-      navigate("/login");
-    }
-    handleClose();
   };
 
   return (
@@ -39,7 +33,7 @@ export default function Basket() {
         onClick={handleClick}
       >
         <Badge badgeContent={3} color="secondary">
-          <img src={"/icons/shopping-cart.svg"} alt="shopping cart" />
+          <img src={"/icons/shopping-cart.svg"} />
         </Badge>
       </IconButton>
       <Menu
@@ -47,6 +41,7 @@ export default function Basket() {
         id="account-menu"
         open={open}
         onClose={handleClose}
+        // onClick={handleClose}
         PaperProps={{
           elevation: 0,
           sx: {
@@ -87,7 +82,7 @@ export default function Basket() {
                 <div className={"cancel-btn"}>
                   <CancelIcon color={"primary"} />
                 </div>
-                <img src={"/img/fresh.webp"} className={"product-img"} alt="product" />
+                <img src={"/img/fresh.webp"} className={"product-img"} />
                 <span className={"product-name"}>Kebab</span>
                 <p className={"product-price"}>$10 x 1</p>
                 <Box sx={{ minWidth: 120 }}>
@@ -101,11 +96,7 @@ export default function Basket() {
           </Box>
           <Box className={"basket-order"}>
             <span className={"price"}>Total: $100 (98 +2)</span>
-            <Button 
-              startIcon={<ShoppingCartIcon />} 
-              variant={"contained"} 
-              onClick={handleCheckout}
-            >
+            <Button startIcon={<ShoppingCartIcon />} variant={"contained"}>
               Order
             </Button>
           </Box>
