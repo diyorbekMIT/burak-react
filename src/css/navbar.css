@@ -2,7 +2,7 @@
     width: 100%;
     height: 773px;
     display: flex;
-    background: url("/Users/macos/burak-react/public/img/banner.webp");
+    background: url("/public/img/banner.webp");
     background-size: cover;
 }
 
