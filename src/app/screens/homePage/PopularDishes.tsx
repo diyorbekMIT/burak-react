@@ -13,8 +13,8 @@ import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 const list = [
   { productName: "Lavash", imagePath: "/img/lavash.webp" },
   { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
-  { productName: "Jaz Kebab", imagePath: "/img/kebab.webp" },
-  { productName: "Lo'li Kebab", imagePath: "/img/kebab-fresh.webp" },
+  { productName: "Kebab", imagePath: "/img/kebab.webp" },
+  { productName: " Shashlik", imagePath: "/img/kebab-fresh.webp" },
 ];
 export default function PopularDishes() {
   return (
