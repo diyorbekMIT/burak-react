@@ -6,18 +6,24 @@ import { useEffect, useState } from "react";
 export function HomeNavbar() {
     const authMember = null;
 
-    
     const [count, setCount] = useState<number>(0);
-    const [value, setValue] = useState<boolean>(true)
-    useEffect(() => {
-    console.log("componentDidMount");
-    setCount(count+1)
 
-    return ()=>{
-      console.log("componentWillUnmount");
+    const [value, setValue] = useState<boolean>(true)
+
+    useEffect(() => {
+      console.log("componentDidMount");
+  
+      setCount(count+1)
+ 
+      return ()=>{
+        console.log("componentWillUnmount");
       
-    }
+      }
   }, [value]);
+
+  const buttonHandler = () => {
+    setValue(!value);
+  }
     return (
         <div className="home-navbar">
             <Container className="navbar-container">
@@ -37,7 +43,7 @@ export function HomeNavbar() {
                         className="links"
                     >
                          <Box className="hover-line">
-                            <NavLink to="/home" className="product-link underline">Home</NavLink>
+                            <NavLink to="/" activeClassName="product-link underline">Home</NavLink>
                         </Box>
                         <Box className="hover-line">
                             <NavLink to="/products" className="product-link">Products</NavLink>
@@ -78,7 +84,7 @@ export function HomeNavbar() {
                 <Button
                   variant={"contained"}
                   className="signup-button"
-                  onClick={() => setValue(!value)}
+                  onClick={buttonHandler}
                 >
                   Signup
                 </Button>
