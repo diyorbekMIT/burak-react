@@ -9,7 +9,7 @@ import "../../../css/home.css";
 
 import { useDispatch} from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit"; 
-import { setPopularDishes } from "./slice";
+import { setNewDishes, setPopularDishes } from "./slice";
 import { Product } from "../../../lib/types/product";
 import ProductService from "../../services/ProductService";
 import { ProductCollection } from "../../../lib/enums/product.enum";
@@ -18,28 +18,42 @@ import { ProductCollection } from "../../../lib/enums/product.enum";
 /** REDUX SLIX & SELECTOR */ 
 
 const acttionDispatch = (dispatch: Dispatch) => ({
-    setPopularDishes: (data: Product[]) => dispatch(setPopularDishes(data))
+    setPopularDishes: (data: Product[]) => dispatch(setPopularDishes(data)),
+    setNewDishes: (data: Product[]) => dispatch(setNewDishes(data))
 });
 
-export function HomePage() {
-    // Selector: Store => Data
-
-    const {setPopularDishes} = acttionDispatch(useDispatch());
-    
-    useEffect (() => {
-        //Backend server data request => Data
-        const product = new ProductService();
-        product.getProducts({
-            page: 1,
-            limit: 4,
-            order: "productViews",
-            productCollection: ProductCollection.DISH
-        }).then((data) => {
-            console.log("data passed here ",data);
-            setPopularDishes(data);
-        }).catch((error) => {
-            console.error(error);
-        });
+export default function HomePage() {
+    const { setPopularDishes, setNewDishes,} = acttionDispatch(
+      useDispatch()
+    );
+  
+    useEffect(() => {
+      const product = new ProductService();
+      product
+        .getProducts({
+          page: 1,
+          limit: 4,
+          order: "productViews",
+          productCollection: ProductCollection.DISH,
+        })
+        .then((data) => {
+          setPopularDishes(data);
+        })
+        .catch((err) => console.log(err));
+  
+      product
+        .getProducts({
+          page: 1,
+          limit: 4,
+          order: "createdAt",
+          productCollection: ProductCollection.DISH,
+        })
+        .then((data) => {
+          setNewDishes(data);
+        })
+        .catch((err) => console.log(err));
+  
+      
     }, []);
    
 

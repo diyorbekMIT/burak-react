@@ -12,7 +12,8 @@ import Footer from "./components/footer";
 
 import { ProductsPage } from "./screens/productsPage";
 import UserPage from "./screens/userPage";
-import { HomePage } from "./screens/homePage";
+import HomePage from "./screens/homePage";
+
 
 
 export function App() {
