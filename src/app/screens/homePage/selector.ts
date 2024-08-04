@@ -12,6 +12,6 @@ export const retrieveNewDishes = createSelector(selectHomePage,
     (HomePage) => HomePage.newDishes
 )
 
-const retrieveTopUsers = createSelector(selectHomePage,
+export const retrieveTopUsers = createSelector(selectHomePage,
     (HomePage) => HomePage.topUsers
 )
