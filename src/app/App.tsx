@@ -9,9 +9,11 @@ import "../css/navbar.css";
 import "../css/footer.css";
 import HelpPage  from "./screens/helpPage";
 import Footer from "./components/footer";
-import { HomePage } from "./screens/homePage";
+
 import { ProductsPage } from "./screens/productsPage";
 import UserPage from "./screens/userPage";
+import { HomePage } from "./screens/homePage";
+
 
 export function App() {
   const location = useLocation();
