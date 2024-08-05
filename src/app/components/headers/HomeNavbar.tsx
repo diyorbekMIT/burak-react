@@ -2,8 +2,14 @@ import { Box, Button, Container, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
 import { useEffect, useState } from "react";
+import { CartItem } from "../../../lib/types/search";
 
-export function HomeNavbar() {
+interface HomeNavbarProps {
+  cartItems: CartItem[]
+}
+
+export function HomeNavbar(props: HomeNavbarProps) {
+    const {cartItems} = props;
     const authMember = null;
 
     const [count, setCount] = useState<number>(0);
@@ -61,7 +67,7 @@ export function HomeNavbar() {
                         <Box className="hover-line">
                             <NavLink to="/help" className="product-link">Help</NavLink>
                         </Box>
-                        <Basket/>
+                        <Basket cartItems={cartItems}/>
                         <Box>
                             {!authMember ? (
                                 <Button variant="contained" className="login-button">Login</Button>
