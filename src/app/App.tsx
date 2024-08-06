@@ -16,13 +16,20 @@ import HomePage from "./screens/homePage";
 import { CartItem } from "../lib/types/search";
 import { useState } from "react";
 import useBasket from "./hooks/useBasket";
+import AuthenticationModal from "./components/auth";
 
 
 
 export function App() {
   const location = useLocation();
-  
   const {cartItems, onAdd, onDelete, onRemove, onDeleteAll} = useBasket();
+  const [signupOpen, setSignupOpen] = useState<boolean>(true);
+  const [loginOpen, setLoginOpen] = useState<boolean>(false);
+
+  /** Handlers */
+
+  const handleSignupClose = () => setSignupOpen(false);
+  const handleLoginClose = () => setLoginOpen(false);
   
   return (
     <>
@@ -58,6 +65,13 @@ export function App() {
         </Route>
       </Switch>
       <Footer />
+
+      <AuthenticationModal 
+       signupOpen={signupOpen}
+       loginOpen={loginOpen}
+       handleLoginClose={handleLoginClose}
+       handleSignupClose={handleSignupClose}
+      />
     </>
   );
 }
