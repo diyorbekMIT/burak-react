@@ -68,7 +68,7 @@ export const OtherNavbar = (props: OtherNavbarProps) => {
                   </NavLink>
                 </Box>
                 <Box className="hover-line">
-                  <NavLink activeClassName="underline" to={"/members/member"}>
+                  <NavLink activeClassName="underline" to={"/member-page"}>
                     My Page
                   </NavLink>
                 </Box>
