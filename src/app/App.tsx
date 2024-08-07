@@ -5,7 +5,7 @@ import { HomeNavbar } from "./components/headers/HomeNavbar";
 import { OtherNavbar } from "./components/headers/OtherNavbar";
 import "../css/App.css";
 import "../css/navbar.css";
-import "../css/home.css"
+
 import "../css/footer.css";
 import HelpPage  from "./screens/helpPage";
 

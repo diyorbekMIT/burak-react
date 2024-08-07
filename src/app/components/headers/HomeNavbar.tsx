@@ -51,31 +51,31 @@ export function HomeNavbar(props: HomeNavbarProps) {
           </Box>
           <Stack className="links">
             <Box className={"hover-line"}>
-              <NavLink to="/" activeClassName="underline">
+              <NavLink to="/" activeClassName="product-link underline">
                 Home
               </NavLink>
             </Box>
             <Box className={"hover-line"}>
-              <NavLink to="/products" activeClassName="underline">
+              <NavLink to="/products" className="product-link" activeClassName=" underline">
                 Products
               </NavLink>
             </Box>
             {authMember ? (
               <>
                 <Box className={"hover-line"}>
-                  <NavLink to="/orders" activeClassName="underline">
+                  <NavLink to="/orders" className="product-link" activeClassName="product-link underline">
                     Orders
                   </NavLink>
                 </Box>
                 <Box className={"hover-line"}>
-                  <NavLink to="/orders" activeClassName="underline">
+                  <NavLink to="/orders" className="product-link" activeClassName="product-link underline">
                     Orders
                   </NavLink>
                 </Box>
               </>
             ) : null}
             <Box className={"hover-line"}>
-              <NavLink to="/help" activeClassName="underline">
+              <NavLink to="/help" className="product-link" activeClassName="product-link underline">
                 Help
               </NavLink>
             </Box>
@@ -90,7 +90,7 @@ export function HomeNavbar(props: HomeNavbarProps) {
             {!authMember ? (
               <Box>
                 <Button
-                  className="login"
+                  className="login-button"
                   variant="contained"
                   onClick={() => setLoginOpen(true)}
                 >
@@ -155,14 +155,14 @@ export function HomeNavbar(props: HomeNavbarProps) {
         </Stack>
         <Stack className="header-frame">
           <Stack className="detail">
-            <Box className="head-txt">World`s Most Delicious Cousine</Box>
+            <Box className="head-main-txt">World`s Most Delicious Cousine</Box>
             <Box className="wel-txt">The Choice, not just a choice</Box>
             <Box className="service-txt">24 hours service</Box>
             <Box className="signup">
               {!authMember ? (
                 <Button
                   variant={"contained"}
-                  className="signup-btn"
+                  className="signup-button"
                   onClick={() => setSignupOpen(true)}
                 >
                   Signup
