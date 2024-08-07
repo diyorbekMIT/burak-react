@@ -23,7 +23,7 @@ import AuthenticationModal from "./components/auth";
 export function App() {
   const location = useLocation();
   const {cartItems, onAdd, onDelete, onRemove, onDeleteAll} = useBasket();
-  const [signupOpen, setSignupOpen] = useState<boolean>(true);
+  const [signupOpen, setSignupOpen] = useState<boolean>(false);
   const [loginOpen, setLoginOpen] = useState<boolean>(false);
 
   /** Handlers */
@@ -39,14 +39,19 @@ export function App() {
           cartItems={cartItems} 
           onRemove={onRemove} 
           onDeleteAll={onDeleteAll} 
-          onDelete={onDelete}/> 
+          onDelete={onDelete}
+          setSignupOpen={setSignupOpen}
+          setLoginOpen={setLoginOpen}/> 
         : 
         <OtherNavbar 
           onAdd={onAdd}
           cartItems={cartItems}
           onRemove={onRemove} 
           onDeleteAll={onDeleteAll} 
-          onDelete={onDelete} />}
+          onDelete={onDelete}
+          setSignupOpen={setSignupOpen}
+          setLoginOpen={setLoginOpen}
+           />}
       <Switch>
         <Route path="/products">
           <ProductsPage onAdd={onAdd}/>
