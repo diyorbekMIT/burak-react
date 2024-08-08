@@ -21,7 +21,7 @@ const pausedOrdersRetriever = createSelector(
 export default function PausedOrders() {
   const {pausedOrders} = useSelector(pausedOrdersRetriever);
 
-
+/** HANDLERS */
 
   return (
     <TabPanel value={"1"}>
@@ -31,7 +31,8 @@ export default function PausedOrders() {
             <Box key={order._id} className={"order-main-box"}>
               <Box className={"order-box-scroll"}>
                 {order?.orderItems?.map((item: OrderItem) => {
-                  const product: Product = order.productData.filter((ele: Product) => item.productId === ele._id) [0];
+                  const product: Product = order.productData.filter(
+                    (ele: Product) => item.productId === ele._id) [0];
                   const imagePath = `${serverApi}/${product.productImages[0]}`;
                   return (
                     <Box key={item._id} className={"orders-name-price"}>
