@@ -26,7 +26,6 @@ export interface Order {
 }
 
 export interface OrderItemInput {
-    map(arg0: (item: OrderItemInput) => Promise<void>): unknown;
     itemQuantity: number;
     itemPrice: number;
     productId: string;
