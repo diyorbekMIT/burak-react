@@ -215,6 +215,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                 variant="outlined"
                 sx={{ my: "10px" }}
                 onAbort={handleUsername}
+                onChange={handleUsername}
               />
               <TextField
                 id={"outlined-basic"}

@@ -91,7 +91,7 @@ export const OtherNavbar = (props: OtherNavbarProps) => {
             {!authMember ? (
               <Box>
                 <Button
-                  className="login"
+                  className="login-button"
                   variant="contained"
                   onClick={() => setLoginOpen(true)}
                 >
