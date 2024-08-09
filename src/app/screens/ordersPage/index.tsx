@@ -14,6 +14,8 @@ import { setFinishedOrders, setPausedOrders, setProcessOrders } from "./slice";
 import { useDispatch } from "react-redux";
 import { OrderStatus } from "../../../lib/enums/order.enum";
 import OrderService from "../../services/OrderService";
+import { useGlobals } from "../../hooks/ueGlobals";
+import { useHistory } from "react-router-dom";
 
 
 const actionDisptach = (dispatch: Dispatch) => ({
@@ -25,6 +27,8 @@ const actionDisptach = (dispatch: Dispatch) => ({
 export default function OrdersPage() {
   const {setPausedOrders, setProcessOrders, setFinishedOrders} = 
     actionDisptach(useDispatch());
+    const {orderBuilder, authMember} = useGlobals()
+    const history = useHistory();
     const [value, setValue] = useState("1");
     const [orderInquiry, setOrderInquiry] = useState<OrderInquiry>({
       page: 1,
@@ -46,13 +50,13 @@ export default function OrdersPage() {
         order.getMyOrders({...orderInquiry, orderStatus: OrderStatus.FINISH})
         .then((data) => setFinishedOrders(data))
         .catch((err) => console.error(err));
-    }, [orderInquiry]);
+    }, [orderInquiry, orderBuilder]);
 
   
   const handleChange = (e: SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
-
+   if(!authMember) history.push("/");
   return (
     <div className={"order-page"}>
       <Container className="order-container">
@@ -73,8 +77,8 @@ export default function OrdersPage() {
               </Box>
             </Box>
             <Stack className={"order-main-content"}>
-              <PausedOrders />
-              <ProcessOrders />
+              <PausedOrders setValue={setValue}/>
+              <ProcessOrders setValue={setValue} />
               <FinishedOrders />
             </Stack>
           </TabContext>

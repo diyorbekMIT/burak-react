@@ -34,7 +34,7 @@ export default function FinishedOrders() {
                   return (
                     <Box key={item._id} className={"orders-name-price"}>
                       <img
-                        src={"/img/kebab-fresh.webp"}
+                        src={imagePath}
                         className={"order-dish-img"}
                       />
                       <p className={"title-dish"}>{product.productName}</p>
